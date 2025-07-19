@@ -9,6 +9,7 @@
       forAllSystems = f: nixpkgs.lib.genAttrs systems (system: f {
         pkgs = import nixpkgs {
           inherit system; #overlays;
+          config.allowUnfree = true;
         };
         inherit system;
       });
