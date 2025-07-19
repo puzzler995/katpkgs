@@ -1,0 +1,1 @@
+A collection of packages I've put together for myself for nix
