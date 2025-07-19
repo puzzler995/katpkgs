@@ -11,6 +11,7 @@ cd "$CONFIG_DIR"
 for f in auth.json config.json; do
     if [ ! -f "$f" ]; then
         cp "$SCRIPT_DIR/$f" .
+        chmod +w "./$f"
         echo "Created default $f in $CONFIG_DIR. Please edit it."
     fi
 done
