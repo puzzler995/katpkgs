@@ -3,7 +3,9 @@
   stdenv,
   fetchFromGitHub,
   cmake,
-  obs-studio
+  obs-studio,
+  pkg-config,
+  fftwFloat
 }:
 
 stdenv.mkDerivation rec {
@@ -20,6 +22,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [
     cmake
+    pkg-config
   ];
 
   postFixup = ''
@@ -31,6 +34,7 @@ stdenv.mkDerivation rec {
 
   buildInputs = [
     obs-studio
+    fftwFloat
   ];
 
   meta = {
