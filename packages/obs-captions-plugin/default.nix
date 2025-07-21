@@ -13,7 +13,6 @@ stdenv.mkDerivation rec {
   version = "0.30";
 
   src = fetchFromGitHub {
-    fetchSubmodules = true;
     owner = "ratwithacompiler";
     repo = "OBS-captions-plugin";
     rev = "v${version}";
