@@ -19,6 +19,7 @@
     in {
       packages = forAllSystems ({ pkgs, ... }: {
           nightbot-now-playing = pkgs.callPackage ./packages/nightbot-now-playing {};
+          obs-captions-plugin = pkgs.callPackage ./packages/obs-captions-plugin {};
         }
       );
 
