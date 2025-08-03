@@ -16,8 +16,9 @@ buildDotnetModule rec {
   dotnet-sdk = dotnetCorePackages.sdk_9_0;
   nugetDeps = ./deps.json;
 
-  extraInstallCommands = ''
-    substituteAll ${./Autopelago.desktop} $out/share/applications/Autopelago.desktop
+  postInstall = ''
+    install -Dm444 ${./Autopelago.desktop} $out/share/applications/Autopelago.desktop
+    substituteAllInPlace $out/share/applications/Autopelago.desktop
   '';
 
   meta = with lib; {
