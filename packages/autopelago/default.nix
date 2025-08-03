@@ -16,8 +16,8 @@ buildDotnetModule rec {
   dotnet-sdk = dotnetCorePackages.sdk_9_0;
   nugetDeps = ./deps.json;
 
-  postInstall = ''
-    install -Dm444 ${./Autopelago.desktop} $out/share/applications/Autopelago.desktop
+  preInstall = ''
+    install -v -Dm444 ${./Autopelago.desktop} $out/share/applications/Autopelago.desktop
     substituteAllInPlace $out/share/applications/Autopelago.desktop
   '';
 
