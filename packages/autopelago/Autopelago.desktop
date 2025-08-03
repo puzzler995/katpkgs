@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Autopelago
+Version=@version@
+Type=Application
+Exec=@out@/bin/autopelago %U
+TryExec=@out@/bin/autopelago
+Terminal=false
+Categories=Games;
