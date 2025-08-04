@@ -18,7 +18,21 @@
     },
     "root": {
       "inputs": {
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "v6data": "v6data"
+      }
+    },
+    "v6data": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1750819490,
+        "narHash": "sha256-3k+l+kp/wbMKLXlnd8zJjYpg54XSLMKRLKOKP6nQhFQ=",
+        "path": "/home/kat/.local/share/Steam/steamapps/common/vvvvvv/data.zip",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/kat/.local/share/Steam/steamapps/common/vvvvvv/data.zip",
+        "type": "path"
       }
     }
   },
