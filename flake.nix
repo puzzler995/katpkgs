@@ -34,6 +34,7 @@
           autopelago = pkgs.callPackage ./packages/autopelago {};
           nightbot-now-playing = pkgs.callPackage ./packages/nightbot-now-playing {};
           touch-portal = pkgs.callPackage ./packages/touch-portal {};
+          snekstudio = pkgs.callPackage ./packages/snekstudio {};
         }
       );
     };
