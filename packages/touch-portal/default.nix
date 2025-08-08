@@ -1,4 +1,4 @@
-{lib, appimageTools, fetchurl, nix-update-script}: 
+{lib, appimageTools, fetchurl, nix-update-script, pkgs}: 
 let 
   pname = "touch-portal";
   version = "4.4";
@@ -11,6 +11,8 @@ let
 in
 appimageTools.wrapType2 {
   inherit pname version src;
+
+  extraPackages = pkgs: with pkgs; [temurin-jre-bin-24 python3Minimal];
 
   passthru.updateScript = nix-update-script {};
 
