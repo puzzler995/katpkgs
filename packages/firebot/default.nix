@@ -41,7 +41,8 @@ stdenv.mkDerivation rec {
   ];
 
   desktopItem = makeDesktopItem {
-    name = "Firebot v5";
+    name = "firebot";
+    desktopName = "Firebot v5";
     comment = "A Powerful all-in-one bot for Twitch Streamers";
     genericName = "Firebot v5";
     exec = "firebot %U";
@@ -57,7 +58,7 @@ stdenv.mkDerivation rec {
   installPhase = ''
     mkdir -p $out/opt/firebot $out/share/applications $out/bin
     cp -rf ${src}/* $out/opt/firebot/
-    cp ${./icons} $out/share/
+    cp -rf ${./icons} $out/share/icons
     chmod +x $out/opt/firebot/Firebot\ v5
 
     #ln -s $out/opt/firebot/Firebot\ v5 $out/bin/firebot
