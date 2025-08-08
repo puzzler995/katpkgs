@@ -1,4 +1,4 @@
-{stdenv, fetchzip, autoPatchelfHook, pkgs, makeWrapper, lib, makeDesktopItem, copyDesktopItems}: 
+{stdenv, fetchzip, autoPatchelfHook, pkgs, makeWrapper, lib, makeDesktopItem}: 
 
 stdenv.mkDerivation rec {
   name = "firebot";
@@ -6,34 +6,62 @@ stdenv.mkDerivation rec {
 
   src = fetchzip {
     url = "https://github.com/crowbartools/Firebot/releases/download/v${version}/firebot-v${version}-linux-x64.tar.gz";
-    sha256 = "sha256-eg0OYi+dfqR/kKmH2AG2SF8pnWsEb54avGkoFCoJauY=";
-    stripRoot = false;
+    sha256 = "sha256-pJ7/wFpokQPcpTNwzQdMVJKOGKdWnEzV/ZlNLgbiZDM=";
   };
 
   nativeBuildInputs = [
     autoPatchelfHook
     makeWrapper
-    copyDesktopItems
   ];
 
-  desktopItems = [ (makeDesktopItem {
-    name = name;
-    desktopName = name;
-    exec = name;
+  buildInputs = with pkgs; [
+    alsa-lib-with-plugins
+    at-spi2-atk
+    cups
+    dbus
+    glamoroustoolkit
+    glib
+    gtk3
+    libdrm
+    libgbm
+    libGL
+    libxkbcommon
+    nspr
+    nss
+    pango
+    systemd
+    xorg.libX11
+    xorg.libXcomposite
+    xorg.libXdamage
+    xorg.libXfixes
+    xorg.libXrandr
+    xorg.libXtst
+    xorg.libxcb
+    xorg_sys_opengl
+  ];
+
+  desktopItem = makeDesktopItem {
+    name = "Firebot v5";
     comment = "A Powerful all-in-one bot for Twitch Streamers";
-    type = "application";
+    genericName = "Firebot v5";
+    exec = "firebot %U";
+    icon = "firebotv5";
+    type = "Application";
     categories = [
-      "network"
-      "chat"
+      "Utility"
+      "Network"
+      "Chat"
     ];
-  })];
+  };
 
   installPhase = ''
     mkdir -p $out/opt/firebot $out/share/applications $out/bin
-    cp -rf firebot-v${version}-linux-x64/* $out/opt/firebot
+    cp -rf ${src}/* $out/opt/firebot/
+    cp ${./icons} $out/share/
     chmod +x $out/opt/firebot/Firebot\ v5
 
-    ln -s $out/opt/firebot/Firebot\ v5 $out/bin/firebot
+    #ln -s $out/opt/firebot/Firebot\ v5 $out/bin/firebot
+    ln -s ${desktopItem}/share/applications/* $out/share/applications
   '';
 
   postFixup = ''
