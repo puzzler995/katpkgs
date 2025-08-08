@@ -1,4 +1,4 @@
-{stdenv, lib, fetchFromGitHub, godot, godot-export-templates-bin, go makeWrapper}: 
+{stdenv, lib, fetchFromGitHub, godot, godot-export-templates-bin, makeWrapper}: 
 stdenv.mkDerivation rec {
   pname = "snekstudio";
   version = "0.1.4";
@@ -7,11 +7,11 @@ stdenv.mkDerivation rec {
     owner = "ExpiredPopsicle";
     repo = "SnekStudio";
     rev = "v${version}";
-    sha256 = "sha256-A5QKqCo9TTdzmK13WRSAfkrKeUqHc4yQCzy4ZZ9uX2M=";
+    sha256 = "sha256-eQ4cWd8mddeSEoi/p1ee0cpmlVbgaHnBbuEGsC2YQKw=";
   };
 
   nativeBuildInputs = [
-    godot4
+    godot
   ];
 
   buildPhase = ''
@@ -20,16 +20,21 @@ stdenv.mkDerivation rec {
     export HOME=$TMPDIR
 
     mkdir -p $HOME/.local/share/godot
-    ln-s ${godot-export-templates-bin}/share/godot/templates $HOME/.local/share/godot
+    ln -s ${godot-export-templates-bin}/share/godot/templates $HOME/.local/share/godot
 
     mkdir -p $out/bin
+    echo "One"
     godot --disable-render-loop --no-header --headless --script Build/WriteBuildVars.gd
+    echo "Two"
     source Build/build_vars.sh
 
+    echo "Three"
     godot --headless --path . --import
 
+    echo "Four"
     godot --headless --path . --script Build/DownloadPythonRequirements.gd
 
+    echo "Five"
     godot --headless --path . --export-release "Linux-x86_64 Build/Builds/SnekStudio_Linux-x86_64/snekstudio
 
     runHook postBuild
@@ -45,6 +50,6 @@ stdenv.mkDerivation rec {
     ln -s $out/libexec/snekstudio $out/bin/snekstudio
 
     runHook postInstall
-  ''
+  '';
 
 }
