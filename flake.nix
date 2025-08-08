@@ -32,6 +32,7 @@
       packages = forAllSystems ({ pkgs, ... }: {
           APCpp = pkgs.callPackage ./packages/apcpp {};
           autopelago = pkgs.callPackage ./packages/autopelago {};
+          firebot = pkgs.callPackage ./packages/firebot {};
           nightbot-now-playing = pkgs.callPackage ./packages/nightbot-now-playing {};
           touch-portal = pkgs.callPackage ./packages/touch-portal {};
           snekstudio = pkgs.callPackage ./packages/snekstudio {};
