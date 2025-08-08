@@ -12,7 +12,7 @@ in
 appimageTools.wrapType2 {
   inherit pname version src;
 
-  extraPackages = pkgs: with pkgs; [temurin-jre-bin-24 python3Minimal];
+  extraPkgs = pkgs: with pkgs; [temurin-jre-bin-24 python3Minimal];
 
   passthru.updateScript = nix-update-script {};
 
