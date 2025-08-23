@@ -27,6 +27,7 @@
           inherit self;
           inputs = self.inputs;
         };
+        natron = import ./overlays/natron.nix {inherit self;};
       };
 
       packages = forAllSystems ({ pkgs, ... }: {
