@@ -22,6 +22,7 @@
 
     in {
       overlays = {
+        _2ship2harkinian = import ./overlays/_2ship2harkinian.nix {inherit self;};
         sm64ex = import ./overlays/sm64ex.nix {inherit self;};
         vvvvvv = import ./overlays/vvvvvv.nix {
           inherit self;
