@@ -5,7 +5,7 @@
       owner = "HarbourMasters";
       repo = "2ship2harkinian";
       rev = "2.0.1";
-      hash = "sha256-JLRw6dzhdY4LqzvLNCgdQZOxhF1TLSH1//82Sk3HrdA=";
+      hash = "sha256-JYID/vT2HXfaty+cmUI/oq9e8S8mfrDorzvEVBgrW8s=";
       fetchSubmodules = true;
     };
   });
