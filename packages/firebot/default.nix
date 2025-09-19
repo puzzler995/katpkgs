@@ -7,6 +7,7 @@ stdenv.mkDerivation rec {
   src = fetchzip {
     url = "https://github.com/crowbartools/Firebot/releases/download/v${version}/firebot-v${version}-linux-x64.tar.gz";
     sha256 = "sha256-pJ7/wFpokQPcpTNwzQdMVJKOGKdWnEzV/ZlNLgbiZDM=";
+    stripRoot=false;
   };
 
   nativeBuildInputs = [
